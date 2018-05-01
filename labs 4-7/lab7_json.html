@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<style>
+table {
+	table-layout: fixed;
+	width: 200px;
+}
+input {
+	text-align: center;
+}
+</style>
+
+<title> Lab 7 - JSON </title>
+
+<!-- Bootstrap stuff -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+
+<style>
+.jumbotron {
+	background-image: url("download.png");
+	background-size: cover;
+	color: white;
+	text-align: center;
+}
+img {
+object-fit: contain;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+	<div class="jumbotron">
+		<h1 class="display-3" style="font-family:'Dosis', sans-serif;">Lab 7 - JSON</h1>
+	</div>
+
+	<div class="card text-center" style="padding: 10px 30px">
+		<img id="cover" class="card-image-top" src="" alt="Cover Art">
+		<div class="card-body">
+			<h3 id="title"></h1>
+			<p id="artists"></p>
+			<hr>
+			<p>
+				<span style="font-weight: bold">Start time (CET): </span><br>
+				<span id="start"></span>
+			</p>
+			<p>
+				<span style="font-weight: bold">Duration: </span><br>
+				<span id="duration"></span>
+			</p>
+		</div>
+	</div>
+</div>
+
+
+<script>
+var obj, myObj, myParse;
+obj = '{"track":[' +
+  '{"title":"Sanctify"},' +
+  '{"artists":"Andreas"},' +
+  '{"starttime":"2017-06-15 07:14:45.907"},' +
+  '{"playduration":"299397"},' +
+  '{"cover":"http://i3.radionomy.com/tracks/232/59e2e00d-540b-4ae2-bdfa-37f4dc400454?radiouid=3a0479df-cfcb-4c5f-b9b2-c3c3595a64e5"}]}';
+
+myParse = JSON.parse(obj);
+
+document.getElementById("title").innerHTML = myParse.track[0].title;
+document.getElementById("artists").innerHTML = myParse.track[1].artists;
+document.getElementById("start").innerHTML = myParse.track[2].starttime;
+document.getElementById("duration").innerHTML = myParse.track[3].playduration;
+document.getElementById("cover").src = myParse.track[4].cover;
+</script>
+
+</body>
+
+</html>
